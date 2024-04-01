@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
-import { state, style, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +30,8 @@ import { state, style, trigger } from '@angular/animations';
           transform: 'translateX(100px)',
         })
       ),
+      transition('normal => highlighted', animate(300)),
+      transition('highlighted  => normal', animate(800)),
     ]),
   ],
 })
