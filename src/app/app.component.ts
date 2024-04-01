@@ -36,4 +36,8 @@ export class AppComponent {
   }
 
   onDelete(item: any) {}
+
+  onAnimate() {
+    this.state = this.state === 'normal' ? 'highlighted' : 'normal';
+  }
 }
