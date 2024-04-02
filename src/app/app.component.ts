@@ -30,13 +30,40 @@ import {
           transform: 'translateX(100px)',
         })
       ),
+      transition('normal <=> highlighted', animate(300)),
+      // transition('highlighted  => normal', animate(800)),
+    ]),
+    trigger('wildState', [
+      state(
+        'normal',
+        style({
+          backgroundColor: 'red',
+          transform: 'translateX(0) scale(1)',
+        })
+      ),
+      state(
+        'highlighted',
+        style({
+          backgroundColor: 'blue',
+          transform: 'translateX(100px) scale(1)',
+        })
+      ),
+      state(
+        'shrunken',
+        style({
+          backgroundColor: 'blue',
+          transform: 'translateX(0px) scale(0.5)',
+        })
+      ),
       transition('normal => highlighted', animate(300)),
       transition('highlighted  => normal', animate(800)),
+      transition('shrunken  <=> *', animate(500)),
     ]),
   ],
 })
 export class AppComponent {
   state = 'normal';
+  wildState = 'normal';
   list: string[] = ['Milk', 'Sugar', 'Bread'];
 
   onAdd(item: any) {
@@ -47,5 +74,11 @@ export class AppComponent {
 
   onAnimate() {
     this.state = this.state === 'normal' ? 'highlighted' : 'normal';
+    this.wildState = this.wildState === 'normal' ? 'highlighted' : 'normal';
+  }
+
+  onShrink() {
+    this.wildState = 'shrunken';
+    // this.wildState = this.state === 'normal' ? 'highlighted' : 'normal';
   }
 }
