@@ -174,4 +174,12 @@ export class AppComponent {
     this.wildState = 'shrunken';
     // this.wildState = this.state === 'normal' ? 'highlighted' : 'normal';
   }
+
+  animationStarted(event: any) {
+    console.log(`🔎 | animationStarted | event:`, event);
+  }
+
+  animationEnded(event: any) {
+    console.log(`🔎 | animationEnded | event:`, event);
+  }
 }
