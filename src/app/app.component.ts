@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import {
   animate,
+  group,
   keyframes,
   state,
   style,
@@ -87,11 +88,13 @@ import {
         animate(300),
       ]),
       transition('* => void', [
-        animate(300),
-        style({
-          transform: 'translateX(100px)',
-          opacity: 0,
-        }),
+        animate(
+          300,
+          style({
+            transform: 'translateX(100px)',
+            opacity: 0,
+          })
+        ),
       ]),
     ]),
     trigger('list2', [
@@ -130,11 +133,21 @@ import {
         ),
       ]),
       transition('* => void', [
-        animate(300),
-        style({
-          transform: 'translateX(100px)',
-          opacity: 0,
-        }),
+        group([
+          animate(
+            300,
+            style({
+              color: 'red',
+            })
+          ),
+          animate(
+            800,
+            style({
+              transform: 'translateX(100px)',
+              opacity: 0,
+            })
+          ),
+        ]),
       ]),
     ]),
   ],
